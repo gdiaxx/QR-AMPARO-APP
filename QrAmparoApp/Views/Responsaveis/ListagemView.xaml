@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QrAmparoApp.Views.Responsaveis.ListagemView">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="Add.png" Command="{Binding NovoResponsavel}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>       
+
+        <StackLayout Padding="10, 0, 0, 0" VerticalOptions="FillAndExpand">
+           
+            
+            <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Responsaveis}" 
+                      SelectedItem="{Binding ResponsavelSelecionado}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Remover" IconImageSource="Delete.png" IsDestructive="True"                                         
+                                    Command="{Binding Path=BindingContext.RemoverResponsavel, Source={x:Reference listView}}"
+                                    CommandParameter="{Binding .}"></MenuItem>
+                            </ViewCell.ContextActions>
+
+
+                            <StackLayout>
+                                <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding Cpf}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding Telefone}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding Email}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding GrauParentesco}" FontSize="18" FontAttributes="Bold"/>
+
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

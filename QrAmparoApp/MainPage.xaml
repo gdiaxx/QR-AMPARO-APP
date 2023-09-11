@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QrAmparoApp.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Bem-vindo à QRAmparo" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Label Text="LOCALIZAÇÃO" HorizontalTextAlignment="Center" FontSize="Title" Padding="30,10,30,10"/>
+        <Label Text="Encontre seu idoso escaneando o QRCode abaixo:" FontSize="16" Padding="30,0,30,0"/>
+        <Image x:Name="imgApp" Source="qrcode2.PNG" VerticalOptions="Start" Grid.Row="1"
+                        Grid.Column="1" HeightRequest="200" />
+        <Label FontSize="24" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>                    
+                        <Span Text="Ou acesse o link: "/>
+
+                        <Span Text="https://bit.ly/3Ikv6gd" TextColor="Blue" TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding TapCommand}"
+                                          CommandParameter="https://bit.ly/3Ikv6gd" />
+                            </Span.GestureRecognizers>
+                        </Span>                       
+                    
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+
+</ContentPage>

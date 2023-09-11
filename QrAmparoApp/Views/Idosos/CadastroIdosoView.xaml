@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QrAmparoApp.Views.Idosos.CadastroIdosoView">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Responsavel" />
+            <Picker Title="Selecionar Responsavel" 
+                    ItemsSource="{Binding Responsaveis}" 
+                    ItemDisplayBinding="{Binding Nome}"
+                    SelectedItem="{Binding ResponsavelSelecionado}"/>
+            
+            <TableView Intent="Form" HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection Title="Dados do Responsável">
+                        <EntryCell Label="Id:" Text="{Binding Id}" IsEnabled="False"></EntryCell>
+                        <EntryCell Label="Nome:" Text="{Binding Nome}"></EntryCell>
+                        <EntryCell Label="Cpf:" Text="{Binding Cpf}" Keyboard="Numeric"></EntryCell>
+                        <EntryCell Label="Rg:" Text="{Binding Rg}" Keyboard="Numeric"></EntryCell>
+                        <EntryCell Label="Endereco:" Text="{Binding Endereco}" ></EntryCell>
+                        
+                        <!--DatePicker só da pra ser inserido em ViewCells>-->
+                        <ViewCell>
+                            <Grid HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="5, 3, 0, 0" Padding="10, 0, 0, 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Label na coluna 0-->
+                                <Label Text="Data de Nascimento:" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="0"/>
+
+                                <!-- DatePicker Data Nacscumento na coluna 1 -->
+                                <DatePicker VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"
+                                Date="{Binding DataNascimento}" Grid.Column="1" Grid.Row="0">
+                                    <DatePicker.Format >dd/MM/yyyy</DatePicker.Format>
+
+                                </DatePicker>
+
+                            </Grid>
+                        </ViewCell>
+
+
+                        <EntryCell Label="Doença:" Text="{Binding Doenca}" ></EntryCell>                     
+                        <EntryCell Label="Sexo:" Text="{Binding Sexo}" ></EntryCell>
+                        <EntryCell Label="Tipo Sanguíneo:" Text="{Binding TipoSanguineo}"></EntryCell>
+                        <EntryCell Label="Numero SUS:" Text="{Binding NumeroSUS}"></EntryCell>
+                      
+                        <ViewCell>
+                            <Button Text="Gravar" FontAttributes="Bold" VerticalOptions="End" Command="{Binding SalvarIdoso}"/>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

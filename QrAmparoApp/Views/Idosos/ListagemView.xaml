@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QrAmparoApp.Views.Idosos.ListagemView">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="Add.png" Command="{Binding NovoIdoso}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="10, 0, 0, 0" VerticalOptions="FillAndExpand">
+            <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Idosos}" 
+                         SelectedItem="{Binding IdosoSelecionada}" >                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Remover" IconImageSource="Delete.png" IsDestructive="True"                                         
+                                    Command="{Binding Path=BindingContext.RemoverIdoso, Source={x:Reference listView}}"
+                                    CommandParameter="{Binding .}"></MenuItem>
+                            </ViewCell.ContextActions>
+
+
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding Cpf}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding Doenca}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding TipoSanguineo}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding NumeroSUS}" FontSize="18" FontAttributes="Bold"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
